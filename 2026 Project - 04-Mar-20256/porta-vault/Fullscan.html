@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Fullscan — My Documents</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', system-ui, sans-serif; }
+    .logo-font { font-family: 'Space Grotesk', sans-serif; }
+    .card { transition: all 0.25s ease; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 15px 30px -10px rgba(0,0,0,0.45); }
+    .modal { animation: modalIn 0.28s cubic-bezier(0.16,1,0.3,1); }
+    @keyframes modalIn { from { opacity:0; transform: scale(0.94) translateY(20px); } to { opacity:1; transform: scale(1) translateY(0); } }
+  </style>
+</head>
+<body class="bg-zinc-950 text-zinc-100 min-h-screen antialiased">
+
+  <div class="flex h-screen overflow-hidden">
+
+    <!-- Sidebar -->
+    <aside class="w-72 bg-zinc-900 border-r border-zinc-800 flex flex-col">
+      <div class="p-8 border-b border-zinc-800">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 bg-gradient-to-br from-violet-600 to-purple-600 rounded-2xl flex center shadow-lg">
+            <span class="text-white text-3xl font-bold logo-font tracking-tighter m-auto">F</span>
+          </div>
+          <span class="logo-font text-3xl font-semibold tracking-tight text-white">Fullscan</span>
+        </div>
+        <p class="text-sm text-zinc-500 mt-1">Personal document vault</p>
+      </div>
+
+      <nav class="flex-1 px-4 py-10 space-y-1.5">
+        <button onclick="show('education')" class="nav-btn w-full flex gap-4 px-6 py-4 rounded-2xl text-left transition bg-zinc-800 text-white">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+          <span class="font-medium">Education</span>
+        </button>
+        <button onclick="show('employment')" class="nav-btn w-full flex gap-4 px-6 py-4 rounded-2xl text-left transition text-zinc-400 hover:text-zinc-200 hover:bg-zinc-800/60">
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-2.796 0-5.38-.477-7.5-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6v6m-6-3h12"/></svg>
+          <span class="font-medium">Employment</span>
+        </button>
+      </nav>
+
+      <div class="p-6 border-t border-zinc-800 mt-auto">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl overflow-hidden ring-2 ring-violet-500/30">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" alt="Aravind" class="w-full h-full object-cover">
+          </div>
+          <div>
+            <div class="font-medium">Aravind</div>
+            <div class="text-xs text-zinc-500">Andhra Pradesh</div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="flex-1 flex flex-col overflow-hidden">
+
+      <header class="h-16 bg-zinc-900 border-b border-zinc-800 px-8 flex items-center">
+        <h1 id="title" class="text-2xl font-semibold tracking-tight">Education Details</h1>
+      </header>
+
+      <div class="flex-1 overflow-auto p-8 lg:p-10">
+        <div id="education" class="space-y-10">
+          <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 card">
+            <h2 class="text-2xl font-semibold mb-6">Education Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">College / Institute Name</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">Indira Institute of Technology</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">University Name</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">JNTU Kakinada</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Degree / Course</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">B.Tech Computer Science</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Year of Passing</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">2022</div>
+              </div>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-zinc-800">
+              <h3 class="text-xl font-medium mb-4">Supporting Documents</h3>
+              <div onclick="openZipModal()" class="bg-zinc-800 border border-zinc-700 hover:border-violet-600 rounded-2xl px-6 py-5 cursor-pointer flex items-center justify-between transition">
+                <div class="flex items-center gap-4">
+                  <div class="text-4xl">📦</div>
+                  <div>
+                    <div class="font-medium text-lg">All_Supporting_Docs.zip</div>
+                    <div class="text-sm text-zinc-400">Mixed education, employment & personal docs • 42.6 MB • 12 files</div>
+                  </div>
+                </div>
+                <span class="text-violet-400">View / Download →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="employment" class="space-y-10 hidden">
+          <div class="bg-zinc-900 border border-zinc-800 rounded-3xl p-8 card">
+            <h2 class="text-2xl font-semibold mb-6">Employment Information</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Organization / Company Name</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">Fullscan Business Solutions</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Designation</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">Operations Executive</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Working Period</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">Sep 2024 – Present</div>
+              </div>
+              <div>
+                <label class="block text-sm text-zinc-400 mb-1.5">Location</label>
+                <div class="bg-zinc-800 border border-zinc-700 rounded-xl px-4 py-3 text-white">Hyderabad</div>
+              </div>
+            </div>
+
+            <div class="mt-10 pt-8 border-t border-zinc-800">
+              <h3 class="text-xl font-medium mb-4">Supporting Documents</h3>
+              <div onclick="openZipModal()" class="bg-zinc-800 border border-zinc-700 hover:border-violet-600 rounded-2xl px-6 py-5 cursor-pointer flex items-center justify-between transition">
+                <div class="flex items-center gap-4">
+                  <div class="text-4xl">📦</div>
+                  <div>
+                    <div class="font-medium text-lg">All_Supporting_Docs.zip</div>
+                    <div class="text-sm text-zinc-400">Mixed education, employment & personal docs • 42.6 MB • 12 files</div>
+                  </div>
+                </div>
+                <span class="text-violet-400">View / Download →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ZIP Modal -->
+  <div id="zipModal" class="hidden fixed inset-0 bg-black/85 flex items-center justify-center z-50 p-4">
+    <div class="modal bg-zinc-900 w-full max-w-4xl rounded-3xl border border-zinc-700 shadow-2xl overflow-hidden">
+      <div class="px-8 py-6 border-b border-zinc-800 bg-zinc-950 flex justify-between items-center">
+        <div class="flex items-center gap-4">
+          <div class="text-5xl">📦</div>
+          <div>
+            <h3 class="text-xl font-semibold">All_Supporting_Docs.zip</h3>
+            <p class="text-sm text-emerald-400 font-mono">12 files • 42.6 MB</p>
+          </div>
+        </div>
+        <button onclick="closeZipModal()" class="text-4xl text-zinc-400 hover:text-white">×</button>
+      </div>
+
+      <div class="max-h-[58vh] overflow-y-auto p-6 space-y-2" id="fileList"></div>
+
+      <div class="px-8 py-6 border-t border-zinc-800 bg-zinc-950 flex justify-between items-center">
+        <div class="flex gap-4">
+          <button id="btnSelected" onclick="downloadSelected()" class="px-7 py-3.5 bg-violet-600 hover:bg-violet-500 text-white rounded-2xl font-medium disabled:opacity-50 transition">
+            Download Selected Files
+          </button>
+          <button onclick="downloadFullZip()" class="px-7 py-3.5 border border-zinc-600 hover:border-zinc-400 rounded-2xl transition">
+            Download Full ZIP
+          </button>
+        </div>
+        <div class="text-sm text-zinc-500">ESC to close</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const sharedFiles = [
+      {name: "Education_Doc_1_Marks_Memo.pdf", size: "2.4 MB"},
+      {name: "Education_Doc_2_Provisional_Cert.pdf", size: "1.9 MB"},
+      {name: "Emp_Doc_1_Offer_Letter.pdf", size: "3.1 MB"},
+      {name: "Emp_Doc_2_Experience_Letter.pdf", size: "2.8 MB"},
+      {name: "Emp_Doc_3_Payslip_Jan_2025.pdf", size: "1.2 MB"},
+      {name: "PAN_Card.pdf", size: "980 KB"},
+      {name: "Aadhar_Card.pdf", size: "1.4 MB"},
+      {name: "Voter_ID.pdf", size: "1.1 MB"},
+      {name: "Bank_Passbook.jpg", size: "2.6 MB"},
+      {name: "Resume_Updated_2025.pdf", size: "1.7 MB"},
+      {name: "10th_Certificate.pdf", size: "3.3 MB"},
+      {name: "Degree_Consolidated_Memo.pdf", size: "4.1 MB"}
+    ];
+
+    let selectedFiles = new Set();
+
+    function show(section) {
+      document.getElementById('education').classList.toggle('hidden', section !== 'education');
+      document.getElementById('employment').classList.toggle('hidden', section !== 'employment');
+      document.getElementById('title').textContent = section === 'education' ? 'Education Details' : 'Employment Details';
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const isActive = btn.textContent.trim().toLowerCase() === section;
+        btn.classList.toggle('bg-zinc-800', isActive);
+        btn.classList.toggle('text-white', isActive);
+        btn.classList.toggle('text-zinc-400', !isActive);
+      });
+    }
+
+    function openZipModal() {
+      selectedFiles.clear();
+      const list = document.getElementById('fileList');
+      list.innerHTML = '';
+
+      sharedFiles.forEach(file => {
+        const row = document.createElement('div');
+        row.className = 'flex items-center gap-5 px-6 py-4 rounded-2xl hover:bg-zinc-800/70 transition';
+        row.innerHTML = `
+          <input type="checkbox" class="w-5 h-5 accent-violet-600 rounded" onchange="toggleFile('${file.name}', this.checked)">
+          <div class="flex-1 min-w-0">
+            <div class="font-medium truncate">${file.name}</div>
+            <div class="text-xs text-zinc-500">${file.size}</div>
+          </div>
+          <button onclick="event.stopPropagation(); downloadSingle('${file.name}')" class="text-violet-400 hover:text-violet-300 px-4 py-2 text-xl">
+            ↓
+          </button>
+        `;
+        list.appendChild(row);
+      });
+
+      document.getElementById('zipModal').classList.remove('hidden');
+    }
+
+    function toggleFile(name, checked) {
+      if (checked) selectedFiles.add(name);
+      else selectedFiles.delete(name);
+    }
+
+    function downloadSingle(name) {
+      alert(`Downloading single file: ${name}\n\n(In real version: direct file download)`);
+    }
+
+    function downloadSelected() {
+      if (selectedFiles.size === 0) return alert('Please select at least one file');
+      alert(`Downloading ${selectedFiles.size} selected file(s) as new ZIP...\nFiles: ${Array.from(selectedFiles).join(', ')}\n\n(In real version: creates ZIP with selected files)`);
+    }
+
+    function downloadFullZip() {
+      alert('Downloading full archive: All_Supporting_Docs.zip\n\n(In real version: serves the original ZIP file)');
+    }
+
+    function closeZipModal() {
+      document.getElementById('zipModal').classList.add('hidden');
+    }
+
+    window.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeZipModal();
+    });
+
+    // Start with Education visible
+    show('education');
+  </script>
+</body>
+</html>
